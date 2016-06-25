@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	
+  <persistence-unit name="statCreateTablesJTA" transaction-type="RESOURCE_LOCAL">
+  <!-- <persistence-unit name="statCreateTablesJTA" transaction-type="RESOURCE_LOCAL"> -->
+    
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    
+    <jta-data-source>java:comp/env/jdbc/visitorsweb</jta-data-source>
+    <!-- <non-jta-data-source>java:comp/env/jdbc/visitorsweb</non-jta-data-source> -->
+    
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    
+    <properties>
+    	<!-- <property name="eclipselink.session.customizer" value="com.oracle.tomcat.example.visitorsweb.JPAEclipseLinkSessionCustomizer"/> -->
+    	
+    	<!-- <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.oracle.OraclePlatform"/> -->            
+    	<!--  this one overrides -->
+    	<!-- <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/visitorsweb"/> -->
+    	<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@DBaaS.compute-metcsgse00861.oraclecloud.internal:1521:ORCL"/>
+        <property name="javax.persistence.jdbc.user" value="system"/>
+        <property name="javax.persistence.jdbc.password" value="Welcome123#"/>
+		<property name="eclipselink.ddl-generation" value="create-tables"/>
+		<property name="eclipselink.logging.level" value="FINEST"/>
+		<property name="eclipselink.logging.level.sql" value="FINEST"/>
+		<property name="eclipselink.logging.exceptions" value="true"/>		
+    </properties>
+    
+  </persistence-unit>
+</persistence>
